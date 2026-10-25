@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HEADSHOTERZ • Recrutamento</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="app">
+
+  <section id="screen-cadastro" class="screen active">
+    <header class="hero">
+      <h1 class="logo">HEADSHOTERZ</h1>
+      <p class="tagline">RECRUTAMENTO • FREE FIRE</p>
+    </header>
+
+    <form id="form-cadastro" class="card" autocomplete="off">
+      <div class="field">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" placeholder="Seu nick" required maxlength="30">
+      </div>
+      <div class="field">
+        <label for="idJogo">ID do Jogo</label>
+        <input type="number" id="idJogo" placeholder="Ex: 123456789" required min="1">
+      </div>
+      <div class="field">
+        <label for="funcao">Função</label>
+        <select id="funcao" required>
+          <option value="Full Gas">Full Gas</option>
+          <option value="Cura">Cura</option>
+          <option value="Rush">Rush</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">ENVIAR PEDIDO</button>
+    </form>
+
+    <footer class="footer">
+      <a href="#" id="link-admin" class="admin-link">Área do Admin</a>
+    </footer>
+  </section>
+
+  <section id="screen-confirmacao" class="screen">
+    <div class="card confirm-card">
+      <div class="check-icon">✓</div>
+      <h2>PEDIDO ENVIADO</h2>
+      <p class="muted">Aguarde análise do admin.</p>
+      <button type="button" class="btn btn-secondary" id="btn-voltar">Voltar ao início</button>
+    </div>
+  </section>
+
+  <section id="screen-login" class="screen">
+    <div class="card login-card">
+      <h2>LOGIN DO ADMIN</h2>
+      <div class="field">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="••••••••">
+      </div>
+      <p id="login-error" class="error-msg"></p>
+      <button type="button" class="btn btn-primary" id="btn-login">ENTRAR</button>
+      <button type="button" class="btn btn-secondary" id="btn-cancelar-login">Cancelar</button>
+    </div>
+  </section>
+
+  <section id="screen-painel" class="screen">
+    <header class="panel-header">
+      <h2>Painel do Admin</h2>
+      <span class="admin-badge">👑 Lobão</span>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><span class="stat-num" id="stat-total">0</span><span class="stat-label">Total</span></div>
+      <div class="stat"><span class="stat-num" id="stat-pendentes">0</span><span class="stat-label">Pendentes</span></div>
+      <div class="stat"><span class="stat-num" id="stat-aceitos">0</span><span class="stat-label">Aceitos</span></div>
+      <div class="stat"><span class="stat-num" id="stat-recusados">0</span><span class="stat-label">Recusados</span></div>
+    </div>
+
+    <div class="filtros">
+      <button class="filtro active" data-filtro="todos">Todos</button>
+      <button class="filtro" data-filtro="pendente">Pendentes</button>
+      <button class="filtro" data-filtro="aceito">Aceitos</button>
+      <button class="filtro" data-filtro="recusado">Recusados</button>
+    </div>
+
+    <div id="lista-pedidos" class="lista-pedidos"></div>
+
+    <button type="button" class="btn btn-secondary btn-sair" id="btn-sair">Sair</button>
+  </section>
+
+</div>
+<script src="/script.js"></script>
+</body>
+</html>

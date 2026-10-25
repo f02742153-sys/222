@@ -1,0 +1,183 @@
+:root{
+  --bg:#080808; --surface:#121212; --surface-2:#1a1a1a; --border:#2a2a2a;
+  --red:#ff1e1e; --red-2:#c50000; --red-glow:rgba(255,30,30,.55);
+  --green:#00d84f; --green-glow:rgba(0,216,79,.45);
+  --yellow:#ffb800; --text:#ededed; --muted:#8a8a8a;
+  --font-display:'Orbitron',sans-serif; --font-body:'Rajdhani',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%}
+body{
+  font-family:var(--font-body);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%,#2a0000 0%,transparent 60%),
+    radial-gradient(ellipse 60% 40% at 50% 110%,#1a0000 0%,transparent 60%),
+    var(--bg);
+  color:var(--text);min-height:100vh;display:flex;justify-content:center;
+  align-items:flex-start;padding:24px 16px 40px;overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background:repeating-linear-gradient(0deg,rgba(255,0,0,.02) 0 1px,transparent 1px 3px);
+  pointer-events:none;z-index:0;
+}
+.app{position:relative;z-index:1;width:100%;max-width:640px;margin-top:40px}
+
+.screen{display:none;animation:fadeIn .35s ease}
+.screen.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.hero{text-align:center;margin-bottom:32px}
+.logo{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(2.3rem,9vw,4.5rem);letter-spacing:3px;color:var(--red);
+  text-shadow:0 0 8px rgba(255,30,30,.9),0 0 24px rgba(255,30,30,.6),0 0 48px rgba(255,30,30,.35);
+  animation:pulseGlow 2.4s ease-in-out infinite;line-height:1;word-break:break-word;
+}
+@keyframes pulseGlow{
+  0%,100%{text-shadow:0 0 8px rgba(255,30,30,.9),0 0 24px rgba(255,30,30,.6),0 0 48px rgba(255,30,30,.35)}
+  50%{text-shadow:0 0 14px rgba(255,30,30,1),0 0 36px rgba(255,30,30,.85),0 0 72px rgba(255,30,30,.55)}
+}
+.tagline{margin-top:10px;font-family:var(--font-display);font-size:.85rem;letter-spacing:6px;color:var(--muted);text-transform:uppercase}
+
+.card{
+  background:linear-gradient(180deg,var(--surface-2),var(--surface));
+  border:1px solid var(--border);border-radius:14px;padding:26px 22px;
+  box-shadow:0 0 0 1px rgba(255,30,30,.06),0 20px 40px -20px rgba(0,0,0,.9);
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:.7;
+}
+
+.field{margin-bottom:18px}
+.field label{
+  display:block;font-family:var(--font-display);font-size:.72rem;
+  letter-spacing:3px;color:#b8b8b8;text-transform:uppercase;margin-bottom:8px;
+}
+.field input,.field select{
+  width:100%;padding:14px 16px;font-size:1.05rem;font-family:var(--font-body);
+  font-weight:600;background:#0b0b0b;border:1px solid #333;border-radius:10px;
+  color:var(--text);outline:none;transition:.2s;-webkit-appearance:none;appearance:none;
+}
+.field select{
+  background-image:linear-gradient(45deg,transparent 50%,var(--red) 50%),
+                   linear-gradient(135deg,var(--red) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;
+  background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:44px;cursor:pointer;
+}
+.field input:focus,.field select:focus{
+  border-color:var(--red);box-shadow:0 0 0 3px rgba(255,30,30,.15),0 0 24px -6px var(--red-glow);
+}
+.field input::placeholder{color:#4a4a4a}
+
+.btn{
+  width:100%;padding:16px 20px;min-height:54px;border:none;border-radius:10px;
+  font-family:var(--font-display);font-weight:700;font-size:.95rem;letter-spacing:2px;
+  cursor:pointer;transition:.2s;text-transform:uppercase;display:flex;align-items:center;
+  justify-content:center;margin-top:6px;
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{
+  color:#fff;background:linear-gradient(135deg,var(--red),var(--red-2));
+  box-shadow:0 0 20px -4px var(--red-glow),inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.btn-primary:hover{box-shadow:0 0 32px -2px var(--red-glow),inset 0 0 0 1px rgba(255,255,255,.15);filter:brightness(1.1)}
+.btn-secondary{background:transparent;color:#ccc;border:1px solid #333}
+.btn-secondary:hover{color:#fff;border-color:#555;background:rgba(255,255,255,.03)}
+
+.footer{text-align:center;margin-top:32px}
+.admin-link{
+  color:#555;font-size:.78rem;letter-spacing:2px;text-decoration:none;
+  text-transform:uppercase;font-family:var(--font-display);border-bottom:1px solid transparent;
+  padding-bottom:2px;transition:.2s;
+}
+.admin-link:hover{color:var(--red);border-color:var(--red)}
+
+.confirm-card{text-align:center;padding:44px 24px}
+.check-icon{
+  width:88px;height:88px;margin:0 auto 22px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:2.5rem;
+  color:var(--green);border:2px solid var(--green);
+  box-shadow:0 0 24px var(--green-glow),inset 0 0 20px -8px var(--green-glow);
+  animation:pop .45s ease;
+}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.12)}100%{transform:scale(1)}}
+.confirm-card h2{font-family:var(--font-display);font-size:1.6rem;letter-spacing:3px;color:#fff;margin-bottom:10px}
+.confirm-card .muted{color:var(--muted);margin-bottom:26px;font-size:1.05rem}
+
+.login-card h2{font-family:var(--font-display);font-size:1.4rem;letter-spacing:3px;color:var(--red);margin-bottom:22px;text-align:center}
+.error-msg{color:var(--red);font-size:.9rem;min-height:20px;margin-bottom:8px;text-align:center;font-weight:600}
+.shake{animation:shake .35s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+
+.panel-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.panel-header h2{font-family:var(--font-display);font-size:clamp(1.2rem,5vw,1.6rem);letter-spacing:2px;color:#fff}
+.admin-badge{
+  font-family:var(--font-display);font-size:.75rem;letter-spacing:2px;color:var(--red);
+  border:1px solid var(--red);padding:6px 10px;border-radius:6px;
+  background:rgba(255,30,30,.08);box-shadow:0 0 14px -4px var(--red-glow);
+}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 6px;text-align:center}
+.stat-num{display:block;font-family:var(--font-display);font-weight:900;font-size:1.35rem;color:var(--red)}
+.stat-label{display:block;font-size:.68rem;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-top:4px}
+
+.filtros{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:18px}
+.filtro{
+  padding:11px 4px;min-height:44px;font-size:.72rem;font-family:var(--font-display);
+  font-weight:700;letter-spacing:1px;background:var(--surface);border:1px solid var(--border);
+  color:#999;border-radius:8px;cursor:pointer;transition:.2s;text-transform:uppercase;
+}
+.filtro:hover{color:#fff;border-color:#444}
+.filtro.active{
+  color:#fff;background:linear-gradient(135deg,var(--red),var(--red-2));
+  border-color:var(--red);box-shadow:0 0 16px -4px var(--red-glow);
+}
+
+.lista-pedidos{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.pedido{
+  background:linear-gradient(180deg,var(--surface-2),var(--surface));
+  border:1px solid var(--border);border-radius:12px;padding:16px;
+  position:relative;overflow:hidden;transition:.25s;
+}
+.pedido::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--yellow)}
+.pedido.aceito::before{background:var(--green)}
+.pedido.recusado::before{background:var(--red);opacity:.7}
+
+.pedido-info h3{font-family:var(--font-display);font-size:1.1rem;letter-spacing:1px;color:#fff;margin-bottom:4px;word-break:break-word}
+.pedido-info p{font-size:.95rem;color:#aaa;margin:2px 0}
+.pedido-info p strong{color:#ddd;font-weight:600}
+
+.badge{
+  display:inline-block;font-family:var(--font-display);font-size:.65rem;letter-spacing:1.5px;
+  padding:4px 9px;border-radius:20px;margin-bottom:10px;text-transform:uppercase;
+}
+.badge-pendente{color:var(--yellow);background:rgba(255,184,0,.12);border:1px solid rgba(255,184,0,.4)}
+.badge-aceito{color:var(--green);background:rgba(0,216,79,.12);border:1px solid rgba(0,216,79,.4)}
+.badge-recusado{color:var(--red);background:rgba(255,30,30,.12);border:1px solid rgba(255,30,30,.4)}
+
+.pedido-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.pedido-actions button{
+  padding:13px 8px;min-height:48px;font-family:var(--font-display);font-size:.8rem;
+  letter-spacing:1.5px;font-weight:700;border-radius:8px;border:1px solid;cursor:pointer;
+  transition:.2s;text-transform:uppercase;
+}
+.btn-accept{color:var(--green);background:rgba(0,216,79,.08);border-color:rgba(0,216,79,.5)}
+.btn-accept:hover:not(:disabled){background:var(--green);color:#001a08;box-shadow:0 0 18px -2px var(--green-glow)}
+.btn-reject{color:var(--red);background:rgba(255,30,30,.08);border-color:rgba(255,30,30,.5)}
+.btn-reject:hover:not(:disabled){background:var(--red);color:#fff;box-shadow:0 0 18px -2px var(--red-glow)}
+.pedido-actions button:disabled{opacity:.25;cursor:not-allowed}
+.pedido-actions button:active:not(:disabled){transform:scale(.96)}
+
+.empty{text-align:center;color:var(--muted);padding:36px 12px;font-size:1rem;border:1px dashed #2a2a2a;border-radius:12px}
+.btn-sair{margin-top:6px}
+
+@media(min-width:720px){
+  .app{margin-top:60px}
+  .card{padding:34px 30px}
+  .logo{letter-spacing:6px}
+  .tagline{letter-spacing:10px;font-size:.95rem}
+}
